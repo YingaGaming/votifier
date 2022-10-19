@@ -37,7 +37,7 @@ Assuming your `private.pem` is in the same directory as your app, a working Voti
 An extended example with error handling can be found in the `examples` directory.
 
 ```javascript
-var votifier = require("node-votifier")(__dirname + "/private.pem");
+var votifier = require("votifier")(__dirname + "/private.pem");
 
 votifier.on("vote", function(user, server, ip, date) {
   console.log(user + " voted.")
@@ -46,7 +46,7 @@ votifier.on("vote", function(user, server, ip, date) {
 
 Complete API
 ------------
--   `require("node-votifier")` returns a `Votifier` Class.
+-   `require("votifier")` returns a `Votifier` Class.
 -   `new Votifier(pathToPrivateKey, port)` or `Votifier(pathToPrivateKey, port)` both return a Votifier instance. They require the *absolute* path to the private key file. The port is optional and defaults to `8192`. Votifier inherits of [EventEmitter](http://nodejs.org/api/events.html#events_class_events_eventemitter).
     - `vote` event. This event passes `user` (username of the voter), `server` (name of the server list), `ip` (IP of the voter) and `date` (date of the vote as a `Date`) to its listeners. It is fired, when Votifier receives a vote.
     - `error` event. This event passes `error` (`Error` with some infomation), to its listeners. This event is fired when something went wrong.
